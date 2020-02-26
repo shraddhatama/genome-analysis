@@ -3,11 +3,16 @@ title: "index"
 author: "Shraddha Tamang"
 date: "2/26/2020"
 output: html_document
+bibliography: data/references.bib
 ---
 This is my new website!
-[lab5](lab-5.html)
 
-```{r}
+* [Lab2](Lab-2B.html)
+* [lab3](lab-3.html)
+* [lab4](lab-4.html)
+* [lab5](lab-5.html)
 
-```
+Application written in R [@RCoreTeam] using the Shiny framework [@Chang2015].
+
+# REFERENCES
 

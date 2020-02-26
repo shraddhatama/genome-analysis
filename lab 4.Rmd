@@ -1,0 +1,131 @@
+---
+title: "Lab 4"
+author: "Shraddha Tamang"
+date: "2/12/2020"
+output: html_document
+---
+
+#Load Libraries 
+```{r}
+library (tidyverse)
+```
+
+#Load Files
+```{r}
+SNPs<- read.table("23andMe_complete.txt", header = TRUE, sep = "\t")
+```
+
+#to adjust figure size {r, fig.width = 6, fig.height = 6}
+```{r}
+SNPs$chromosome = ordered(SNPs$chromosome, levels=c(seq(1, 22), "X", "Y", "MT"))
+ggplot(data = SNPs) + 
+  geom_bar(mapping = aes(x = genotype, fill = chromosome)) + 
+  coord_polar() +
+  ggtitle("Total SNPs for each genotype") +
+  ylab("Total number of SNPs") +
+  xlab("Genotype")
+```
+
+#Graphic Output
+#Plot graph to a pdf outputfile
+```{r}
+pdf("SNP_example_plot.pdf", width=6, height=3)
+ggplot(data = SNPs) + 
+  geom_bar(mapping = aes(x = chromosome, fill = genotype))
+dev.off()
+```
+# Plot graph to a png outputfile
+```{r}
+# Plot graph to a png outputfile
+ppi <- 300
+png("SNP_example_plot.png", width=6*ppi, height=6*ppi, res=ppi)
+ggplot(data = SNPs) + 
+  geom_bar(mapping = aes(x = chromosome, fill = genotype))
+dev.off()
+```
+# RMarkdown loading images
+
+![Genotype counts per chromosome](SNP_example_plot.png) 
+
+<img src="SNP_example_plot.png" alt="Genotype counts per chromosome" style="width: 600px;"/>
+# Interactive graphs and tables in RMarkdown reports
+#Version 1
+```{r}
+library(plotly)
+p <- ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) + 
+  geom_point()
+ggplotly(p)
+```
+#Version 2
+```{r}
+library(plotly)
+ggplotly(
+  ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) + 
+    geom_point()
+ )
+```
+#DT
+```{r}
+library(DT)
+datatable(iris)
+```
+
+## Exercise 
+
+# Exercise 1
+```{r}
+SNPs<- read.table("23andMe_complete.txt", header = TRUE, sep = "\t")
+p<- ggplot(SNPs,aes(chromosome)) +
+  geom_bar(fill = "blue") +
+  ggtitle("Total SNPs for each chromosome") +
+  ylab("Total number of SNPs") +
+  xlab("chromosome")
+p
+```
+
+# Exercise 2
+```{r}
+mycolor<-c("AA"="blue", "AC"="blue", "AG"="blue", "AT"="blue", "CC"="blue", "CG"="blue", "CT"="blue", "GG"="blue", "GT"="blue", "TT"="blue","A"="pink", "C"="pink", "G"="pink", "T"="pink", "D"="orange", "DD"="orange", "DI"="orange","I"="orange","II"="orange","--"="green")
+ggplot(SNPs, aes(chromosome, fill = genotype))+
+  geom_bar(color = "black")+
+  ggtitle("Total SNPs count for each chromosome")+
+  ylab("SNP count")+
+  xlab("Chromosome")+
+  scale_fill_manual(values=c(mycolor)) 
+```
+
+# Exercise 3
+```{r}
+ppi <- 300
+png("ex3_plot", width=6*ppi, height=6*ppi, res=ppi)
+ggplot(data = SNPs, aes(chromosome, fill = genotype)) + 
+  geom_bar(position = "dodge")
+dev.off()
+```
+
+# Exercise 4
+```{r}
+SNPs$chromosome=ordered(SNPs$chromosome, levels=c(seq(1,22),"X","Y","MT"))
+ggplot(SNPs,aes(chromosome,fill=genotype))+
+  geom_bar(position="dodge")+
+  facet_wrap(~chromosome, scales="free")+
+  ggtitle("SNP Count for Each Type of Chromosome")+
+  ylab("SNP Count(Thousands)")+
+  xlab("Type of Chromosome")
+```
+# Exercise 5
+```{r}
+library(plotly)
+SNPs$chromosome=ordered(SNPs$chromosome, levels=c(seq(1,22),"X","Y","MT"))
+ggplotly(
+  ggplot(SNPs,aes(chromosome,fill=genotype))+
+  geom_bar(position="dodge")+
+  facet_wrap(~chromosome, scales="free")
+)
+```
+# Exercise 6
+```{r}
+chromosome_subset <- subset(SNPs, chromosome == "Y")
+datatable(chromosome_subset)
+```
+
