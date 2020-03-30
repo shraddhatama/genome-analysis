@@ -1,7 +1,7 @@
 ---
 title: "index"
 author: "Shraddha Tamang"
-date: "2/26/2020"
+date: "3/30/2020"
 output: html_document
 bibliography: data/references.bib
 ---
@@ -11,7 +11,7 @@ This is my new website!
 * [lab3](lab-3.html)
 * [lab4](lab-4.html)
 * [lab5](lab-5.html)
-* [lab9](lab-9ST.html)
+* [Lab9](lab-9ST.html)
 
 Application written in R [@RCoreTeam] using the Shiny framework [@Chang2015].
 
