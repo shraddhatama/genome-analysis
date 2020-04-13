@@ -11,7 +11,8 @@ This is my new website!
 * [lab3](lab-3.html)
 * [lab4](lab-4.html)
 * [lab5](lab-5.html)
-* [Lab9](lab-9ST.html)
+* [Lab9](Lab-9.html)
+* [lab10](lab-10.html)
 
 Application written in R [@RCoreTeam] using the Shiny framework [@Chang2015].
 
