@@ -13,6 +13,11 @@ This is my new website!
 * [lab5](lab-5.html)
 * [Lab9](Lab-9.html)
 * [lab10](lab-10.html)
+* This is Lab 11 and 12.
+  [ex1](https://shraddhatamang.shinyapps.io/lab12-ex1/)
+  [ex2](https://shraddhatamang.shinyapps.io/lab12-ex2/)
+  [ex3](https://shraddhatamang.shinyapps.io/lab12-ex3/)
+  [ex4](https://shraddhatamang.shinyapps.io/lab12-ex4/)
 
 Application written in R [@RCoreTeam] using the Shiny framework [@Chang2015].
 
